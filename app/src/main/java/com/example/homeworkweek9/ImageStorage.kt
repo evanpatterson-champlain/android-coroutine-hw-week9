@@ -20,10 +20,17 @@ class ImageStorage {
     }
 
     fun requestBitmap(source: String): Bitmap {
+        // if you already have the image stored,
+        // return what you have
         return if (images.contains(source)) {
             images[source]!!
-        } else {
-            loadBitmap(source)
+        }
+        // if not then load it, store it,
+        // and then return it
+        else {
+            val bitmapImage = loadBitmap(source)
+            images[source] = bitmapImage
+            bitmapImage
         }
     }
 
