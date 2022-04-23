@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name">HomeworkWeek9</string>
+    <string-array name="image_url_list">
+
+        <item>https://cloudfront-us-east-1.images.arcpublishing.com/coindesk/XA6KIXE6FBFM5EWSA25JI5YAU4.jpg</item>
+        <item>https://static.wikia.nocookie.net/pirates/images/e/ea/DMTNT_Jack_Sparrow_cropped.png</item>
+        <item>https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/screen-shot-2022-01-26-at-14-44-26-1643218033.png?resize=480:*</item>
+        <item>https://preview.redd.it/d3gr3djo5tc21.jpg?width=960&amp;crop=smart&amp;auto=webp&amp;s=f6078f611a4c2c96074501bf5a63590acdae5a33</item>
+        <item>https://dynaimage.cdn.cnn.com/cnn/q_auto,w_1519,c_fill,g_auto,h_855,ar_16:9/http%3A%2F%2Fcdn.cnn.com%2Fcnnnext%2Fdam%2Fassets%2F170606121056-hawaii---travel-destination---shutterstock-457528552.jpg</item>
+        <item>https://i0.wp.com/electroverse.net/wp-content/uploads/2018/09/greenland-ice-sheet-e1535815794816.jpg?fit=1379%2C802&amp;ssl=1</item>
+        <item>https://i0.wp.com/electroverse.net/wp-content/uploads/2021/12/greenland-cold-and-snow-e1638791174503.jpg?fit=812%2C529&amp;ssl=1</item>
+        <item>https://weandthecolor.com/wp-content/uploads/2014/11/3-Snowy-mountains-and-polar-lights-from-a-video-directed-by-Scientifantastic-studio-for-Panasonic.jpg</item>
+        <item>https://media-cldnry.s-nbcnews.com/image/upload/newscms/2018_01/2280531/180103-ufo-illustration-mn-1015.jpg</item>
+        <item>https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/screen-shot-2022-04-20-at-16-49-18-1650469770.png?resize=768:*</item>
+
+    </string-array>
+
+    <string-array name="image_descriptions">
+
+        <item>
+            Description1</item>
+        <item>
+            Description2</item>
+        <item>
+            Description3</item>
+        <item>
+            Description4</item>
+        <item>
+            Description5</item>
+        <item>
+            Description6</item>
+        <item>
+            Description7</item>
+        <item>
+            Description8</item>
+        <item>
+            Description9</item>
+        <item>
+            Description10</item>
+
+    </string-array>
+
+</resources>
