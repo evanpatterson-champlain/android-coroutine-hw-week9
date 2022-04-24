@@ -3,6 +3,7 @@ package com.example.homeworkweek9
 import android.annotation.SuppressLint
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
+import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.util.Log
 import android.view.MotionEvent
@@ -15,10 +16,13 @@ import java.net.HttpURLConnection
 import java.net.URL
 import java.util.*
 import kotlin.coroutines.coroutineContext
+import kotlin.math.min
 
 
 private lateinit var binding: ActivityMainBinding
 class MainActivity : AppCompatActivity() {
+
+    private lateinit var blankImage: Drawable
 
     private lateinit var imageURLs: Array<out String>
     private lateinit var imageDescriptions: Array<out String>
@@ -28,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private fun initVariables() {
         imageURLs = resources.getStringArray(R.array.image_url_list)
         imageDescriptions = resources.getStringArray(R.array.image_descriptions)
+        blankImage = getDrawable(R.drawable.blank)!!
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,17 +51,26 @@ class MainActivity : AppCompatActivity() {
 
     private fun launchImageGet() {
         imgJob = GlobalScope.launch(Dispatchers.IO) {
-            val url = URL(imageURLs[curImageIndex])
-            val httpConnection = url.openConnection() as HttpURLConnection
-            httpConnection.doInput = true
-            httpConnection.connect()
-            val inputStream = httpConnection.inputStream
-            val bitmapImage = BitmapFactory.decodeStream(inputStream)
-
-            launch(Dispatchers.Main) {
-                binding.imageView.setImageBitmap(bitmapImage)
-                binding.imageDescription.text = imageDescriptions[curImageIndex]
-                imgJob = null
+            try {
+                val url = URL(imageURLs[curImageIndex])
+                val httpConnection = url.openConnection() as HttpURLConnection
+                httpConnection.doInput = true
+                httpConnection.connect()
+                val inputStream = httpConnection.inputStream
+                val bitmapImage = BitmapFactory.decodeStream(inputStream)
+                launch(Dispatchers.Main) {
+                    binding.imageView.setImageBitmap(bitmapImage)
+                    binding.imageDescription.text = imageDescriptions[curImageIndex]
+                    imgJob = null
+                }
+            }
+            catch (e: Exception) {
+                launch(Dispatchers.Main) {
+                    binding.imageView.setImageDrawable(blankImage)
+                    binding.imageDescription.text = imageDescriptions[curImageIndex]
+                    imgJob = null
+                }
+                Log.d("ERROR", e.toString())
             }
         }
     }
@@ -65,13 +79,14 @@ class MainActivity : AppCompatActivity() {
     private fun setOnTouchDescription() {
         binding.imageDescription.setOnTouchListener(OnTouchListener { _, event ->
             if (event.action == MotionEvent.ACTION_DOWN) {
-                if (imgJob != null) {
+                if (imgJob != null && imgJob!!.isActive) {
                     Log.d("Log", "Cancelled image request")
                     imgJob!!.cancel("Called a new request")
                     imgJob = null
                 }
+                val ceiling = min(imageURLs.size, imageDescriptions.size)
                 curImageIndex++
-                curImageIndex %= imageURLs.size
+                curImageIndex %= ceiling
                 launchImageGet()
             }
             false

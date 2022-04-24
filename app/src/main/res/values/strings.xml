@@ -18,25 +18,25 @@
     <string-array name="image_descriptions">
 
         <item>
-            Description1</item>
+            Description for image 1</item>
         <item>
-            Description2</item>
+            Description for image 2</item>
         <item>
-            Description3</item>
+            Description for image 3</item>
         <item>
-            Description4</item>
+            Description for image 4</item>
         <item>
-            Description5</item>
+            Description for image 5</item>
         <item>
-            Description6</item>
+            Description for image 6</item>
         <item>
-            Description7</item>
+            Description for image 7</item>
         <item>
-            Description8</item>
+            Description for image 8</item>
         <item>
-            Description9</item>
+            Description for image 9</item>
         <item>
-            Description10</item>
+            Description for image 10</item>
 
     </string-array>
 
